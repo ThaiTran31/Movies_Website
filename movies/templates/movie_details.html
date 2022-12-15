@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Movie Details</h1>
+    {% if movie %}
+        <a href="{{ movie.trailer_url }}">{{ movie.name }}</a> ({{movie.origin_name}})
+        <img src="{{ movie.poster_url }}">
+    {% endif %}
+{% endblock %}
