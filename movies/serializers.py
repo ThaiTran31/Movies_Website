@@ -43,9 +43,10 @@ class EpisodeSerializer(serializers.ModelSerializer):
         ]
 
 class MovieSerializer(serializers.ModelSerializer):
-    actors = ActorSerializer(many=True, read_only=True)
-    directors = DirectorSerializer(many=True, read_only=True)
-    categories = CategorySerializer(many=True, read_only=True)
+    actors = ActorSerializer(many=True)
+    directors = DirectorSerializer(many=True)
+    categories = CategorySerializer(many=True)
+    episodes = EpisodeSerializer(many=True, write_only=True)
 
     class Meta:
         model = Movie
@@ -69,17 +70,36 @@ class MovieSerializer(serializers.ModelSerializer):
             "actors",
             "directors",
             "categories",
+            "episodes",
         ]
 
     def create(self, validated_data):
         actors = validated_data.pop('actors')
         directors = validated_data.pop('directors')
         categories = validated_data.pop('categories')
+        episodes = validated_data.pop('episodes')
         movie_instance = Movie.objects.create(**validated_data)
         for actor_data in actors:
-            Actor.objects.create(**actor_data)
+            name = actor_data.get('name')
+            try:
+                actor_instance = Actor.objects.get(name=name)
+            except Actor.DoesNotExist:
+                actor_instance = Actor.objects.create(**actor_data)
+            movie_instance.actors.add(actor_instance)
         for director_data in directors:
-            Director.objects.create(**director_data)
+            name = director_data.get('name')
+            try:
+                director_instance = Director.objects.get(name=name)
+            except Director.DoesNotExist:
+                director_instance = Director.objects.create(**director_data)
+            movie_instance.directors.add(director_instance)
         for category_data in categories:
-            Category.objects.create(**category_data)
+            name = category_data.get('name')
+            try:
+                category_instance = Category.objects.get(name=name)
+            except Category.DoesNotExist:
+                category_instance = Category.objects.create(**category_data)
+            movie_instance.categories.add(category_instance)
+        for episode_data in episodes:
+            Episode.objects.create(movie=movie_instance, **episode_data)
         return movie_instance
