@@ -25,7 +25,7 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
-    <link href="../static/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/style.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -35,9 +35,9 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="../static/bootstrap.min.css" />
-    <link rel="stylesheet" href="../static/style-min.css" />
-    <link rel="stylesheet" href="../static/cards.css" />
+    <link rel="stylesheet" href="../../static/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../static/style-min.css" />
+    <link rel="stylesheet" href="../../static/cards.css" />
   </head>
 
   <style>
@@ -169,7 +169,8 @@
                     </button>
                     <div class="dropdown-content" style="color: white">
                       {% for category in categories %}
-                      <a href="movies-by-category/{{category.slug}}"
+                      <a
+                        href="http://127.0.0.1:8000/movies-by-category/{{category.slug}}"
                         >{{category.name}}</a
                       >
                       {% endfor %}
@@ -216,7 +217,7 @@
           <h3>Hollywood</h3>
           <hr />
 
-          {% for movie in movie_list %}
+          {% for movie in movies_by_cate %}
           <div class="poster">
             <div class="flip-card_i">
               <div class="flip-card-inner_i">
@@ -276,7 +277,7 @@
                   </button>
                   <script type="text/javascript">
                     function openMovieWin() {
-                      window.location.replace("http://localhost:8000/detail");
+                      window.location.replace("http://localhost:8000/movies/");
                     }
                   </script>
                 </div>
@@ -345,6 +346,6 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-    <script src="./static/script.js"></script>
+    <script src="../../static/script.js"></script>
   </body>
 </html>

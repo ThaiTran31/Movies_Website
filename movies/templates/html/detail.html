@@ -35,44 +35,54 @@
       <div id="movie" class="well">
         <div class="row">
           <div class="col-md-4">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BOWUzMzdiNzAtMjY0YS00ZmIwLWI1MDUtYzZhN2I0OGUwMmI3XkEyXkFqcGdeQXVyNTM2NjIwOA@@._V1_SX300.jpg"
-              class="thumbnail"
-            />
+            <img src="{{movie.poster_url}}" class="thumbnail" />
           </div>
           <div class="col-md-8">
-            <h2>Tiêu đề phim</h2>
+            <h2>{{movie.name}}</h2>
             <ul class="list-group">
               <li class="list-group-item">
-                <strong>Genre:</strong>Short, Drama
+                <strong>Thể loại: </strong>{% for category in category %}
+                <span>{{category.name}}</span>
+                <span>,</span>
+                {% endfor %}
               </li>
-              <li class="list-group-item"><strong>Released:</strong>N/A</li>
-              <li class="list-group-item"><strong>Rated:</strong>N/A</li>
-              <li class="list-group-item"><strong>ImdbRating:</strong>N/A</li>
+
               <li class="list-group-item">
-                <strong>Director:</strong>Peter Callow, Sesselia Olafs
-              </li>
-              <li class="list-group-item">
-                <strong>Writer:</strong>Sesselia Olafs
+                <strong>Năm phát hành:</strong>{{movie.year}}
               </li>
               <li class="list-group-item">
-                <strong>Actors:</strong>Sesselia Olafs, Pétur Friðrik Jónsson,
-                Sverrir Jóhannsson
+                <strong>Thời lượng:</strong>{{movie.time}}
+              </li>
+              <li class="list-group-item">
+                <strong>Chất lượng:</strong>{{movie.quality}}
+              </li>
+              <li class="list-group-item">
+                <strong>Đạo diễn:</strong>{% for director in director %}
+                <span>{{director}}</span>
+                <span>,</span>
+                {% endfor %}
+              </li>
+              <li class="list-group-item">
+                <strong>Tập hiện tại: </strong>{{movie.episode_current}}
+              </li>
+              <li class="list-group-item">
+                <strong>Diễn viên:</strong>{% for actor in actor %}
+                <span>{{actor}}</span>
+                <span>,</span>
+                {% endfor %}
               </li>
             </ul>
           </div>
         </div>
         <div class="row">
           <div class="well">
-            <h3>Plot</h3>
+            <h3>Mô tả</h3>
 
-            It is about isolated people who yearn for human contact and
-            connection. Their search leads them to discover something new within
-            themselves.
+            {{movie.description}}
 
             <hr />
             <a
-              href="http://imdb.com/title/tt13729976"
+              href="{{movie.trailer_url}}"
               target="_blank"
               class="btn bg-danger"
               >Xem trailer</a
