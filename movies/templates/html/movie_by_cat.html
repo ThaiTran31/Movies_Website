@@ -272,9 +272,9 @@
                   <!-- </form> -->
                   <br />
                   <br />
-                  <button class="btn_i b4_i" onclick="openMovieWin()">
+                  <a href="http://localhost:8000/movies/{{movie.slug}}" class="btn_i b4_i">
                     ▶Detail
-                  </button>
+                  </a>
                   <script type="text/javascript">
                     function openMovieWin() {
                       window.location.replace("http://localhost:8000/movies/{{movie.slug}}");
@@ -325,7 +325,7 @@
     <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="../static/main-min.js"></script>
+    <script src="../../../static/main-min.js"></script>
 
     <script>
       jQuery("#waterdrop").raindrops({
@@ -346,6 +346,6 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-    <script src="../../static/script.js"></script>
+    <script src="../../../static/script.js"></script>
   </body>
 </html>
