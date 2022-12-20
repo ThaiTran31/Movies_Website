@@ -133,8 +133,9 @@ def MovieListByCategory(request, category_slug):
 
 
 def MovieDetail(request, movie_slug):
-    # movie = Movie.objects.get(slug=movie_slug)
-    movie = movies[0]
+    movie = Movie.objects.get(slug=movie_slug)
+    print(movie.query)
+    # movie = movies[0]
     context = {
         'movie': movie,
         'category': movie["category"],
