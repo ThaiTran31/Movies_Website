@@ -60,6 +60,6 @@ class Episode(models.Model):
     name = models.CharField(max_length=4, null=True, blank=True)
     slug = models.SlugField(max_length=4, null=True, blank=True)
     filename = models.CharField(max_length=255, null=True, blank=True)
-    embedded_link = models.CharField(max_length=511, null=True, blank=True)
-    m3u8_link = models.CharField(max_length=511, null=True, blank=True)
+    link_embed = models.CharField(max_length=511, null=True, blank=True)
+    link_m3u8 = models.CharField(max_length=511, null=True, blank=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True, blank=True)
